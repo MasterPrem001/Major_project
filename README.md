@@ -19,7 +19,7 @@ now we will use that dataset to train Ml model's using 3 Ml algorithm  : 1)Loges
 		Now we will compare the accuracy of the # ML model and export the one with highest accuracy which in this case is DECISION TREE
 	we used Pickle to export the ML model of decision tree xcalled : Cyber_model.pkl
 
- # Step 4 : Extracting Features from user In[ut
+ # Step 4 : Extracting Features from user Input
  we will not make an feature.py to extract features from user input url and convert them into a row type dataset that the Ml model will take it aas input and predict them
 # Step 5: Making A phishing website and connecting ML model
 now we first make app.py and import flask (for api calls),pickle(for loading ml model) and the feature from feature.py to extract the feature from user input
