@@ -56,6 +56,8 @@ def chatbot():
     if 'conversation' not in session:
         session['conversation'] = []
 
+    reply = ""  
+
     if request.method == 'POST':
         user_input = request.form.get('query')  # Get the user's query
         try:
