@@ -25,7 +25,18 @@ now we will use that dataset to train Ml model's using 3 Ml algorithm  : 1)Loges
  we will not make an feature.py to extract features from user input url and convert them into a row type dataset that the Ml model will take it aas input and predict them
 # Step 5: Making A phishing website and connecting ML model
 now we first make app.py and import flask (for api calls),pickle(for loading ml model) and the feature from feature.py to extract the feature from user input
-then we will use flask api to render the homepage in index.html and also make an /predict which will use features and give to ml model which will predict and give output['label'] as 0 or 1 now we will print it is phishing url if output is 0 or its safe if output is 1 
+then we will use flask api to render the homepage in index.html and also make an /predict which will use features and give to ml model which will predict and give output['label'] as 0 or 1 now we will print it is phishing url if output is 0 or its safe if output is 1  
 
+# Step 6: Adding Chatbot Features using Ollama 
+1: i rendered the ollama to host locally using AI_API 
+2: then using @app.route('/chatbot, methods=['GET','POST']) i define chatbot with methods GET POST
+3: intialize session variable for storing conversation history 
+4: using requests and try block prepare a data for the AI model gemma2:2b 
+5: send request to ollama model 
+6: upadating chatbot conversation history 
+7: making frontend for chatbot using chatbot.html in templates 
+8: then to render templates in flask code for efficent working of chatbot 
+
+## *Caution: to use this Chatbot you have to first install Ollama gemma2 .
 
 ## *Caution: This detection is powered by an ML model and it is not 100% accurate. Please exercise caution and avoid entering sensitive information on websites flagged as phishing or even on seemingly safe websites.
