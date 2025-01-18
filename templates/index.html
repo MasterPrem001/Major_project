@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Website Detector</title>
+    <link rel="stylesheet" href="static\style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Phishing Website Detector</h1>
+      <form id="phishing-form">
+        <label for="url">Enter URL:</label>
+        <input
+          type="url"
+          id="url"
+          name="url"
+          placeholder="https://example.com"
+          required
+        />
+        <button type="button" onclick="submitForm()">Check</button>
+      </form>
+      <h2 id="result"></h2>
+      <a href="/info" id="info-link">What is Phishing?</a>
+    </div>
+   <!-- Floating Chatbot Button -->
+   <a id="chatbot-widget" href="/chatbot" target="_blank">
+    <svg id="chatbot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.41 2.94 8.17 7 9.5V22l4-3h1c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 16.5c-1.24 0-2.48-.3-3.57-.87l-.82-.43-2.41.63.64-2.42-.43-.82A8.473 8.473 0 0 1 3.5 12c0-4.69 3.81-8.5 8.5-8.5s8.5 3.81 8.5 8.5-3.81 8.5-8.5 8.5z"></path>
+    </svg>
+</a>
+    <script>
+      async function submitForm() {
+        const form = document.getElementById("phishing-form");
+        const formData = new FormData(form);
+        const response = await fetch("/predict", {
+          method: "POST",
+          body: formData,
+        });
+        const result = await response.json();
+        const resultElement = document.getElementById("result");
+        resultElement.className = "";
+
+        if (result.prediction_good) {
+          resultElement.textContent = result.prediction_good;
+          resultElement.classList.add("good");
+        } else if (result.prediction_bad) {
+          resultElement.textContent = result.prediction_bad;
+          resultElement.classList.add("bad");
+        } else {
+          resultElement.textContent = result.error || "Unknown error occurred.";
+        }
+        function openChatbot() {
+            // Use Flask's /chatbot route
+            window.location.href = '/chatbot';
+        }
+      }
+    </script>
+  </body>
+</html>

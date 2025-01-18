@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="static/chatbot.css">
+</head>
+<body>
+    <div id="chatbot-container">
+        <h1>Cyber Buddy</h1>
+        <div id="chat-history">
+            {% for entry in conversation %}
+                <div class="chat-message user-message">
+                    <strong>You:</strong> {{ entry.user }}
+                </div>
+                <div class="chat-message bot-message">
+                    <strong>Cyber Buddy:</strong> {{ entry.bot }}
+                </div>
+            {% endfor %}
+        </div>
+        <form method="POST" action="/chatbot" class="form-container">
+            <input type="text" id="query" name="query" placeholder="Ask me anything..." required>
+            <button type="submit">Send</button>
+        </form>
+        <button onclick="window.location.href='/'" id="Back">Back</button>
+    </div>
+</body>
+</html>
