@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Buddy</title>
+    <link rel="stylesheet" href="static/chatbot.css">
+</head>
+<body>
+    <div id="chatbot-container">
+        <div class="chat-header">
+            <h1>Cyber Buddy</h1>
+            <p class="subtitle">Your cybersecurity assistant</p>
+        </div>
+        
+        <div id="chat-history">
+            {% if conversation|length == 0 %}
+                <div class="welcome-message">
+                    <p>Hello! I'm Cyber Buddy, your friendly cybersecurity assistant. 
+                       Ask me any questions about phishing, online security, or how to stay safe online.</p>
+                </div>
+            {% endif %}
+            
+            {% for entry in conversation %}
+                <div class="chat-message user-message">
+                    <div class="message-avatar">You</div>
+                    <div class="message-content">
+                        <p>{{ entry['user'] }}</p>
+                    </div>
+                </div>
+                <div class="chat-message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>{{ entry['bot'] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="chat-input-container">
+            <form method="POST" action="/chatbot" class="form-container" id="chat-form">
+                <input type="text" id="query" name="query" placeholder="Ask a question about cybersecurity..." required>
+                <button type="submit" id="send-btn">Send</button>
+            </form>
+            <button onclick="window.location.href='/'" id="Back">Back to Security Check</button>
+        </div>
+    </div>
+
+    <script>
+        // Scroll to bottom of chat history when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatHistory = document.getElementById('chat-history');
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        });
+
+        // Show loading indicator when form is submitted
+        document.getElementById('chat-form').addEventListener('submit', function() {
+            const button = document.getElementById('send-btn');
+            button.disabled = true;
+            button.innerHTML = 'Sending...';
+        });
+    </script>
+</body>
+</html>

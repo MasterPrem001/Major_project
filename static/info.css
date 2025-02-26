@@ -1,0 +1,40 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('bg-img.webp');
+  color: #333;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin-left: 20%;
+  margin-right: 0%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+p, ul {
+  line-height: 1.6;
+}
+
+ul {
+  margin: 10px 0 0 20px;
+}
+img{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+a{
+  font-size: large;
+  color:rgb(218, 218, 106);
+}
