@@ -38,5 +38,7 @@ then we will use flask api to render the homepage in index.html and also make an
    then to render templates in flask code for efficent working of chatbot 
 
 ## *Reminder: To use this Chatbot you have to first install Ollama gemma2 .
+using ollama pull gemma:2b
+
 
 ## *Caution: This detection is powered by an ML model and it is not 100% accurate. Please exercise caution and avoid entering sensitive information on websites flagged as phishing or even on seemingly safe websites.
